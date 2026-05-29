@@ -38,7 +38,7 @@ export class ProdutoController {
 
   async buscarPorId(req: Request, res: Response, next: NextFunction) {
     try {
-      const { id } = req.params;
+      const id = req.params.id as string;
 
       const produto = await prisma.produto.findUnique({
         where: { id },
@@ -112,7 +112,7 @@ export class ProdutoController {
 
   async atualizar(req: Request, res: Response, next: NextFunction) {
     try {
-      const { id } = req.params;
+      const id = req.params.id as string;
 
       const produtoExiste = await prisma.produto.findUnique({
         where: { id },
@@ -143,7 +143,7 @@ export class ProdutoController {
 
   async deletar(req: Request, res: Response, next: NextFunction) {
     try {
-      const { id } = req.params;
+      const id = req.params.id as string;
 
       const produtoExiste = await prisma.produto.findUnique({
         where: { id },
