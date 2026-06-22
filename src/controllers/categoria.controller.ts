@@ -36,7 +36,10 @@ export class CategoriaController {
     next: NextFunction
   ) {
     try {
-      const { id } = req.params;
+      const idParam = req.params.id;
+      const id = Array.isArray(idParam)
+        ? idParam[0]
+        : idParam;
 
       const categoria = await prisma.categoria.findUnique({
         where: { id },

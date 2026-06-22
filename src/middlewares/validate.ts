@@ -8,7 +8,7 @@ export function validate(schema: ZodSchema) {
       next();
     } catch (error) {
       if (error instanceof ZodError) {
-        const erros = error.errors.map((e) => ({
+        const erros = error.issues.map((e) => ({
           campo: e.path.join("."),
           mensagem: e.message,
         }));
